@@ -138,7 +138,7 @@ Ejercicios
 
 ![Etiquetado de la señal](img/capt1.png)
 
-'''
+```
 0.0000000 0.4732398 S
 0.4732398 1.6485528 V
 1.6485528 1.8876495 S
@@ -148,7 +148,7 @@ Ejercicios
 5.1608672 5.8699940 S
 5.8699940 7.5984906 V
 7.5984906 7.8447152 S
-'''
+```
 
 - A la vista de la gráfica, indique qué valores considera adecuados para las magnitudes siguientes:
 
