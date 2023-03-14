@@ -138,7 +138,7 @@ Ejercicios
 
 ![Etiquetado de la señal](img/capt1.png)
 
-	Este es el contenido del fichero de transcripción *.lab*. Con este formato analizaremos después la calidad de nuestro detector. 
+Este es el contenido del fichero de transcripción *.lab*. Con este formato analizaremos después la calidad de nuestro detector. 
 
 ```
 0.0000000 0.4732398 S
