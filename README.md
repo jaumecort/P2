@@ -143,19 +143,19 @@ Ejercicios
 	* Incremento del nivel potencia en dB, respecto al nivel correspondiente al silencio inicial, para
 	  estar seguros de que un segmento de señal se corresponde con voz.
 
-	  	Pondremos un nivel de 15 dB sobre el silencio para suponer que estamos analizando señal que incluye voz.
+	  	> Pondremos un nivel de 15 dB sobre el silencio para suponer que estamos analizando señal que incluye voz.
 
 	* Duración mínima razonable de los segmentos de voz y silencio.
 
-		El silencio más corto que hemos etiquetado en nuestro audio dura aproximadamente 200 ms, dejaremos un pequeño margen y estableceremos un tiempo mínimo de 150 ms.
+		> El silencio más corto que hemos etiquetado en nuestro audio dura aproximadamente 200 ms, dejaremos un pequeño margen y estableceremos un tiempo mínimo de 150 ms.
 
-		El segmento de voz de menor duración que hemos etiquetado dura 960 ms, dejando margen, podemos exigir 600 ms de voz para etiquetar el segmento como tal.
+		> El segmento de voz de menor duración que hemos etiquetado dura 960 ms, dejando margen, podemos exigir 600 ms de voz para etiquetar el segmento como tal.
 
 
 
 	* ¿Es capaz de sacar alguna conclusión a partir de la evolución de la tasa de cruces por cero?
 		
-		Notamos que en las transiciones de segmentos de silencio a voz, es decir, al inicio de palabras, suele haber picos en la tasa de cruces por cero. Además, este parametro suele ser mas ruidoso y alto en los segmentos de silencio.
+		> Notamos que en las transiciones de segmentos de silencio a voz, es decir, al inicio de palabras, suele haber picos en la tasa de cruces por cero. Además, este parametro suele ser mas ruidoso y alto en los segmentos de silencio.
 
 
 ### Desarrollo del detector de actividad vocal
