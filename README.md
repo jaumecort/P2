@@ -154,6 +154,7 @@ Ejercicios
 
 
 	* ¿Es capaz de sacar alguna conclusión a partir de la evolución de la tasa de cruces por cero?
+		
 		Notamos que en las transiciones de segmentos de silencio a voz, es decir, al inicio de palabras, suele haber picos en la tasa de cruces por cero. Además, este parametro suele ser mas ruidoso y alto en los segmentos de silencio.
 
 
