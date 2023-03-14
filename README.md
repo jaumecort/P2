@@ -138,6 +138,20 @@ Ejercicios
 
 ![Etiquetado de la señal](img/capt1.png)
 
+Este es el contenido del fichero de transcripción *.lab*. Con este formato analizaremos después la calidad de nuestro detector. 
+
+```
+0.0000000 0.4732398 S
+0.4732398 1.6485528 V
+1.6485528 1.8876495 S
+1.8876495 2.8659600 V
+2.8659600 3.7959175 S
+3.7959175 5.1608672 V
+5.1608672 5.8699940 S
+5.8699940 7.5984906 V
+7.5984906 7.8447152 S
+```
+
 - A la vista de la gráfica, indique qué valores considera adecuados para las magnitudes siguientes:
 
 	* Incremento del nivel potencia en dB, respecto al nivel correspondiente al silencio inicial, para
@@ -147,9 +161,7 @@ Ejercicios
 
 	* Duración mínima razonable de los segmentos de voz y silencio.
 
-		> El silencio más corto que hemos etiquetado en nuestro audio dura aproximadamente 200 ms, dejaremos un pequeño margen y estableceremos un tiempo mínimo de 150 ms.
-
-		> El segmento de voz de menor duración que hemos etiquetado dura 960 ms, dejando margen, podemos exigir 600 ms de voz para etiquetar el segmento como tal.
+		> El silencio más corto que hemos etiquetado en nuestro audio dura aproximadamente 200 ms, dejaremos un pequeño margen y estableceremos un tiempo mínimo de 150 ms. El segmento de voz de menor duración que hemos etiquetado dura 960 ms, dejando margen, podemos exigir 600 ms de voz para etiquetar el segmento como tal.
 
 
 
