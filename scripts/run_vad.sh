@@ -8,6 +8,9 @@ DIR_P2=$HOME/PAV/P2
 DB=$DIR_P2/db.v4
 CMD=$DIR_P2/bin/vad
 
+# Compile project
+ninja -C $DIR_P2/bin
+
 for filewav in $DB/*/*wav; do
 #    echo
     echo "**************** $filewav ****************"
@@ -27,5 +30,6 @@ for filewav in $DB/*/*wav; do
 done
 
 scripts/vad_evaluation.pl $DB/*/*lab
+ninja -C $DIR_P2/bin
 
 exit 0
