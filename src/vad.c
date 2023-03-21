@@ -29,11 +29,7 @@ typedef struct {
 
 Features compute_features(const float *x, int N) {
   Features feat;
-<<<<<<< HEAD
-  //feat.zcr = feat.am = (float) rand()/RAND_MAX;
-=======
   //feat.zcr = compute_zcr(x,N);
->>>>>>> 9e9be58174a960598a4d8e38e21fc851113bd06a
   feat.p = compute_power(x,N);
   //feat.am = compute_am(x,N);
   return feat;
@@ -50,7 +46,7 @@ VAD_DATA * vad_open(float rate) {
   vad_data->frame_length = rate * FRAME_TIME * 1e-3;
   vad_data->last_feature = 0;
   vad_data->alpha1 = 2.06;
-  vad_data->alpha2 = 6.91;
+  vad_data->alpha2 = 5.92;
   vad_data->min_silence = 0.069;
   vad_data->min_voice = 0.01;
   vad_data->maybe_s_counter = 0;

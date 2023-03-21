@@ -179,115 +179,13 @@ Ejercicios
 
 	```
 	vad_data->alpha1 = 2.06;
-	vad_data->alpha2 = 6.91;
+	vad_data->alpha2 = 5.91;
 	vad_data->min_silence = 0.069;
 	vad_data->min_voice = 0.01;
 	```
-	> Como vemos a continuación, obtenemos un F-TOTAL de 91.222%
+	> Como vemos a continuación, obtenemos un F-TOTAL de 90.787%
 	```
-	===> /home/jaumecort/PAV/P2/db.v4/2014/pav_4151.lab: 94.679%
-	===> /home/jaumecort/PAV/P2/db.v4/2014/pav_4152.lab: 73.730%
-	===> /home/jaumecort/PAV/P2/db.v4/2014/pav_4161.lab: 89.006%
-	===> /home/jaumecort/PAV/P2/db.v4/2014/pav_4171.lab: 79.728%
-	===> /home/jaumecort/PAV/P2/db.v4/2014/pav_4172.lab: 76.947%
-	===> /home/jaumecort/PAV/P2/db.v4/2014/pav_4305.lab: 94.749%
-	===> /home/jaumecort/PAV/P2/db.v4/2014/pav_4311.lab: 88.366%
-	===> /home/jaumecort/PAV/P2/db.v4/2014/pav_4341.lab: 87.823%
-	===> /home/jaumecort/PAV/P2/db.v4/2015/pav_2109.lab: 89.056%
-	===> /home/jaumecort/PAV/P2/db.v4/2015/pav_2110.lab: 94.363%
-	===> /home/jaumecort/PAV/P2/db.v4/2015/pav_2151.lab: 90.985%
-	===> /home/jaumecort/PAV/P2/db.v4/2015/pav_2152.lab: 96.663%
-	===> /home/jaumecort/PAV/P2/db.v4/2015/pav_2171.lab: 94.066%
-	===> /home/jaumecort/PAV/P2/db.v4/2015/pav_2172.lab: 94.794%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_1341.lab: 90.168%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_4111.lab: 93.906%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_4112.lab: 87.685%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_41191.lab: 91.705%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_41192.lab: 95.665%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_412_1.lab: 80.134%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_4131.lab: 82.431%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_4132.lab: 85.378%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_4151.lab: 94.954%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_4161.lab: 90.051%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_418.lab: 95.295%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_4311.lab: 95.274%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_4312.lab: 94.844%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_4313.lab: 94.906%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_4321.lab: 89.972%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_4331.lab: 91.095%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q1/pav_4351.lab: 91.959%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q2/pav_1121.lab: 85.565%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q2/pav_1131.lab: 94.772%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q2/pav_1141.lab: 88.588%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q2/pav_1171.lab: 85.049%
-	===> /home/jaumecort/PAV/P2/db.v4/201617q2/pav_2151.lab: 91.532%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q1/pav_1131.lab: 93.439%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q1/pav_4115.lab: 89.022%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q1/pav_4131.lab: 92.590%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q1/pav_4141.lab: 89.442%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q1/pav_4161.lab: 93.706%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q1/pav_4171.lab: 97.499%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q1/pav_4341.lab: 93.562%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q2/pav_137.lab: 89.427%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q2/pav_2121.lab: 91.545%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q2/pav_2141.lab: 95.142%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q2/pav_2142.lab: 76.713%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q2/pav_2171.lab: 91.923%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q2/pav_2191.lab: 96.376%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q2/pav_231.lab: 87.905%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q2/pav_232.lab: 90.602%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q2/pav_233.lab: 94.578%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q2/pav_2342.lab: 89.767%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q2/pav_236.lab: 94.885%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q2/pav_237.lab: 89.270%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q2/pav_238.lab: 85.912%
-	===> /home/jaumecort/PAV/P2/db.v4/2017-18q2/pav_239.lab: 93.650%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4111.lab: 94.173%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4112.lab: 74.330%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4121.lab: 97.737%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4122.lab: 95.165%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4131.lab: 92.876%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4132.lab: 89.178%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4141.lab: 83.853%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4151.lab: 96.068%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4161.lab: 93.891%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4171.lab: 89.924%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4172.lab: 79.720%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4181.lab: 92.003%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4182.lab: 87.731%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4341.lab: 90.052%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4342.lab: 80.569%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4351.lab: 89.457%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4352.lab: 81.925%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4361.lab: 86.973%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4362.lab: 97.925%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4371.lab: 97.712%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4372.lab: 96.394%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4382.lab: 86.565%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q1/pav_4385.lab: 88.886%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_21101.lab: 63.405%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2111.lab: 87.631%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2121.lab: 96.916%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2131.lab: 87.507%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2141.lab: 94.928%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2151.lab: 87.333%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2152.lab: 93.910%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2161.lab: 92.272%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2171.lab: 94.834%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_21x1.lab: 95.256%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_231001.lab: 90.337%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2311.lab: 87.036%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2321.lab: 96.545%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2331.lab: 88.360%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2341.lab: 89.185%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2342.lab: 95.757%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_235.lab: 90.281%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2361.lab: 92.152%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2371.lab: 96.814%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2372.lab: 86.991%
-	===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2381.lab: 86.950%
-	**************** Summary ****************
-	===> TOTAL: 91.222%
+	**************** media/PAV_P2.lab ****************                               Warning: adding extra silence [7.8447152, 7.97606] at the end of ref: media/PAV_P2.lab                                                                            Recall V:  5.16/5.25   98.38%   Precision V:  5.16/6.16   83.86%   F-score V (2)  : 95.09%                                                                        Recall S:  1.74/2.73   63.58%   Precision S:  1.74/1.82   95.34%   F-score S (1/2): 86.68%                                                                        ===> media/PAV_P2.lab: 90.787% 
 	````
 
 - Inserte una gráfica en la que se vea con claridad la señal temporal, el etiquetado manual y la detección
