@@ -183,7 +183,7 @@ Este es el contenido del fichero de transcripción *.lab*. Con este formato anal
 	vad_data->min_silence = 0.069;
 	vad_data->min_voice = 0.01;
 	```
-	> El resultado:
+	> Como vemos a continuación, obtenemos un F-TOTAL de 91.222%
 	```
 	===> /home/jaumecort/PAV/P2/db.v4/2014/pav_4151.lab: 94.679%
 	===> /home/jaumecort/PAV/P2/db.v4/2014/pav_4152.lab: 73.730%
@@ -293,7 +293,7 @@ Este es el contenido del fichero de transcripción *.lab*. Con este formato anal
 - Inserte una gráfica en la que se vea con claridad la señal temporal, el etiquetado manual y la detección
   automática conseguida para el fichero grabado al efecto. 
 
-![Etiquetado y VAD de la señal](img/capt2.png)
+	![Etiquetado y VAD de la señal](img/capt2.png)
 
 - Explique, si existen. las discrepancias entre el etiquetado manual y la detección automática.
 
