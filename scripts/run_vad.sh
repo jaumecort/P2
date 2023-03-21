@@ -1,12 +1,17 @@
 #!/bin/bash
 
+if [ $# != 1 ]; then
+    echo "Usage: $0 alfa 0"
+    exit -1
+fi
+
 # Be sure that this file has execution permissions:
 # Use the nautilus explorer or chmod +x run_vad.sh
 
 # Write here the name and path of your program and database
 DIR_P2=$HOME/PAV/P2
 DB=$DIR_P2/db.v4
-CMD=$DIR_P2/bin/vad
+CMD="$DIR_P2/bin/vad -1 $1" 
 
 # Compile project
 ninja -C $DIR_P2/bin
