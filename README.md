@@ -176,13 +176,12 @@ Este es el contenido del fichero de transcripción *.lab*. Con este formato anal
   tiempo real tan exacto como sea posible. Tome como objetivo la maximización de la puntuación-F `TOTAL`.
 
 	> Jugando con los parametros del detector, encontramos un buen resultado sobre la base de datos con los siguientes valores:
-
-	```
-	vad_data->alpha1 = 2.06;
-	vad_data->alpha2 = 6.91;
-	vad_data->min_silence = 0.069;
-	vad_data->min_voice = 0.01;
-	```
+		```
+		vad_data->alpha1 = 2.06;
+		vad_data->alpha2 = 6.91;
+		vad_data->min_silence = 0.069;
+		vad_data->min_voice = 0.01;
+		```
 
   ```
   ===> /home/jaumecort/PAV/P2/db.v4/2014/pav_4151.lab: 94.679%
