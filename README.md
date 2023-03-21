@@ -185,7 +185,11 @@ Ejercicios
 	```
 	> Como vemos a continuación, obtenemos un F-TOTAL de 90.787%
 	```
-	**************** media/PAV_P2.lab ****************                               Warning: adding extra silence [7.8447152, 7.97606] at the end of ref: media/PAV_P2.lab                                                                            Recall V:  5.16/5.25   98.38%   Precision V:  5.16/6.16   83.86%   F-score V (2)  : 95.09%                                                                        Recall S:  1.74/2.73   63.58%   Precision S:  1.74/1.82   95.34%   F-score S (1/2): 86.68%                                                                        ===> media/PAV_P2.lab: 90.787% 
+	**************** media/PAV_P2.lab ****************
+	Warning: adding extra silence [7.8447152, 7.97606] at the end of ref: media/PAV_P2.lab
+	Recall V:  5.16/5.25   98.38%   Precision V:  5.16/6.16   83.86%   F-score V (2)  : 95.09%
+	Recall S:  1.74/2.73   63.58%   Precision S:  1.74/1.82   95.34%   F-score S (1/2): 86.68%
+	===> media/PAV_P2.lab: 90.787% 
 	````
 
 - Inserte una gráfica en la que se vea con claridad la señal temporal, el etiquetado manual y la detección
@@ -198,6 +202,13 @@ Ejercicios
 - Evalúe los resultados sobre la base de datos `db.v4` con el script `vad_evaluation.pl` e inserte a 
   continuación las tasas de sensibilidad (*recall*) y precisión para el conjunto de la base de datos (sólo
   el resumen).
+
+  ```
+  ****************Summary****************
+  Recall V:471.65/495.55 95.18%   Precision V:471.65/535.77 88.03%   F-score V (2)  : 93.66%
+  Recall S:257.05/321.17 80.03%   Precision S:257.05/280.95 91.49%   F-score S (1/2): 88.95%
+  ===> TOTAL: 91.271%
+  ```
 
 
 ### Trabajos de ampliación
