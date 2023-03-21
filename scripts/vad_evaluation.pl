@@ -126,7 +126,7 @@ sub print_statistics {
 	printf "Recall S:%6.2f/%-6.2f%6.2f%%   Precision S:%6.2f/%-6.2f%6.2f%%   F-score S (1/2):%6.2f%%\n", 
 		$SS, $SS + $SV, $recaS, $SS, $SS + $VS, $precS, $F_S;
 
-    printf "===> %s: %.3f%%\n", $filename, ($F_V * $F_S) ** (1. / 2.);
+    printf "===> %s: %.3f%%", $filename, ($F_V * $F_S) ** (1. / 2.);
     print "\n";
 }
 

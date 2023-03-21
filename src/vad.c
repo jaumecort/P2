@@ -3,19 +3,17 @@
 #include <stdio.h>
 
 #include "pav_analysis.h"
-
 #include "vad.h"
 
-const float FRAME_TIME = 10.0F; /* in ms. */
+const float FRAME_TIME = 12.0F; /* in ms. */
 
 /* 
  * As the output state is only ST_VOICE, ST_SILENCE, or ST_UNDEF,
  * only this labels are needed. You need to add all labels, in case
  * you want to print the internal state in string format
  */
-
 const char *state_str[] = {
-  "UNDEF", "S", "V", "INIT"
+  "UNDEF", "S", "V", "INIT", "M_S", "M_V"
 };
 
 const char *state2str(VAD_STATE st) {
@@ -29,23 +27,15 @@ typedef struct {
   float am;
 } Features;
 
-/* 
- * TODO: Delete and use your own features!
- */
-
 Features compute_features(const float *x, int N) {
-  /*
-   * Input: x[i] : i=0 .... N-1 
-   * Ouput: computed features
-   */
-  /* 
-   * DELETE and include a call to your own functions
-   *
-   * For the moment, compute random value between 0 and 1 
-   */
   Features feat;
+<<<<<<< HEAD
   //feat.zcr = feat.am = (float) rand()/RAND_MAX;
+=======
+  //feat.zcr = compute_zcr(x,N);
+>>>>>>> 9e9be58174a960598a4d8e38e21fc851113bd06a
   feat.p = compute_power(x,N);
+  //feat.am = compute_am(x,N);
   return feat;
 }
 
@@ -58,6 +48,13 @@ VAD_DATA * vad_open(float rate) {
   vad_data->state = ST_INIT;
   vad_data->sampling_rate = rate;
   vad_data->frame_length = rate * FRAME_TIME * 1e-3;
+  vad_data->last_feature = 0;
+  vad_data->alpha1 = 2.06;
+  vad_data->alpha2 = 6.91;
+  vad_data->min_silence = 0.069;
+  vad_data->min_voice = 0.01;
+  vad_data->maybe_s_counter = 0;
+  vad_data->maybe_v_counter = 0;
   return vad_data;
 }
 
@@ -66,7 +63,8 @@ VAD_STATE vad_close(VAD_DATA *vad_data) {
    * TODO: decide what to do with the last undecided frames
    */
   VAD_STATE state = vad_data->state;
-
+  if(state == ST_MAYBE_SILENCE) state = ST_VOICE;
+  if(state == ST_MAYBE_VOICE) state = ST_SILENCE;
   free(vad_data);
   return state;
 }
@@ -90,21 +88,55 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
   Features f = compute_features(x, vad_data->frame_length);
   vad_data->last_feature = f.p; /* save feature, in case you want to show */
 
+  vad_data->k1 = vad_data->k0 + vad_data->alpha1; 
+  vad_data->k2 = vad_data->k1 + vad_data->alpha2;
+
   switch (vad_data->state) {
   case ST_INIT:
+    vad_data->k0 = f.p;
+    vad_data->k1 = vad_data->k0 + vad_data->alpha1; 
+    vad_data->k2 = vad_data->k1 + vad_data->alpha2;
     vad_data->state = ST_SILENCE;
     break;
 
   case ST_SILENCE:
-    if (f.p > -30)
-      vad_data->state = ST_VOICE;
+    if (f.p > vad_data->k2){
+      vad_data->state = ST_MAYBE_VOICE;
+      vad_data->maybe_v_counter++;
+    } else if(f.p < vad_data->k1){
+      //vad_data->k0 = (vad_data->k0 + f.p)/2;
+    }
     break;
 
   case ST_VOICE:
-    if (f.p < -30)
-      vad_data->state = ST_SILENCE;
+    if (f.p < vad_data->k1){
+      vad_data->state = ST_MAYBE_SILENCE;
+      vad_data->maybe_s_counter++;
+    }
     break;
 
+  case ST_MAYBE_VOICE:
+    if (f.p > vad_data->k2){
+      if(vad_data->maybe_v_counter*vad_data->frame_length/vad_data->sampling_rate < vad_data->min_voice)
+        vad_data->maybe_v_counter++;
+      else vad_data->state = ST_VOICE;
+    } else if (f.p < vad_data->k2){
+      vad_data->maybe_v_counter = 0;
+      vad_data->state = ST_SILENCE;
+    }
+    break;
+
+  case ST_MAYBE_SILENCE:
+    if (f.p < vad_data->k1){
+      if(vad_data->maybe_s_counter*vad_data->frame_length/vad_data->sampling_rate < vad_data->min_silence)
+        vad_data->maybe_s_counter++;
+      else vad_data->state = ST_SILENCE;
+    } else if (f.p < vad_data->k1){
+      vad_data->maybe_s_counter = 0;
+      vad_data->state = ST_VOICE;
+    }
+    break;
+  
   case ST_UNDEF:
     break;
   }
@@ -117,5 +149,5 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
 }
 
 void vad_show_state(const VAD_DATA *vad_data, FILE *out) {
-  fprintf(out, "%d\t%f\n", vad_data->state, vad_data->last_feature);
+  fprintf(out, "%s\t%f\n", state2str(vad_data->state), vad_data->last_feature);
 }
