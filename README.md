@@ -183,7 +183,7 @@ Este es el contenido del fichero de transcripción *.lab*. Con este formato anal
 	vad_data->min_silence = 0.069;
 	vad_data->min_voice = 0.01;
 	```
-> El resultado:
+	> El resultado:
 	```
 	===> /home/jaumecort/PAV/P2/db.v4/2014/pav_4151.lab: 94.679%
 	===> /home/jaumecort/PAV/P2/db.v4/2014/pav_4152.lab: 73.730%
