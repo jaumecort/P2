@@ -120,13 +120,13 @@ sub print_statistics {
 	$beta = 1. / 2.;
 	my $F_S = (1. + $beta ** 2) * $recaS * $precS / ($eps + $recaS + $beta ** 2 * $precS);
 
-	printf "Recall V:%6.2f/%-6.2f%6.2f%%   Precision V:%6.2f/%-6.2f%6.2f%%   F-score V (2)  :%6.2f%%\n", 
+#	printf "Recall V:%6.2f/%-6.2f%6.2f%%   Precision V:%6.2f/%-6.2f%6.2f%%   F-score V (2)  :%6.2f%%\n", 
 		$VV, $VV + $VS, $recaV, $VV, $VV + $SV, $precV, $F_V;
 
-	printf "Recall S:%6.2f/%-6.2f%6.2f%%   Precision S:%6.2f/%-6.2f%6.2f%%   F-score S (1/2):%6.2f%%\n", 
+#	printf "Recall S:%6.2f/%-6.2f%6.2f%%   Precision S:%6.2f/%-6.2f%6.2f%%   F-score S (1/2):%6.2f%%\n", 
 		$SS, $SS + $SV, $recaS, $SS, $SS + $VS, $precS, $F_S;
 
-    printf "===> %s: %.3f%%\n", $filename, ($F_V * $F_S) ** (1. / 2.);
+    printf "===> %s: %.3f%%", $filename, ($F_V * $F_S) ** (1. / 2.);
     print "\n";
 }
 
@@ -226,7 +226,7 @@ foreach my $filelab (@ARGV) {
     die "VAD file not found: $filevad\n" 
 	unless -f $filevad;
 
-    print "**************** $filelab ****************\n";
+#    print "**************** $filelab ****************\n";
     my %statistics = compare_labs($filelab, $filevad);
     print_statistics(\%statistics, $filelab);
     acum_statistics(\%acum_statistics, \%statistics);
