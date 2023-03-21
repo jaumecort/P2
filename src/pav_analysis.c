@@ -29,6 +29,8 @@ float compute_am(const float *x, unsigned int N) {
     for(unsigned int i=0;i<N;i++) sum = sum + fabs(x[i]);
     return sum/N;
 }
+
+
 //Tasa de cruces por cero
 float compute_zcr(const float *x, unsigned int N, float fm) {
     float sum=1e-12;
