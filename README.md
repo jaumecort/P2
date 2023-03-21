@@ -174,6 +174,16 @@ Este es el contenido del fichero de transcripción *.lab*. Con este formato anal
 
 - Complete el código de los ficheros de la práctica para implementar un detector de actividad vocal en
   tiempo real tan exacto como sea posible. Tome como objetivo la maximización de la puntuación-F `TOTAL`.
+
+		> Jugando con los parametros del detector, encontramos un buen resultado sobre la base de datos con los siguientes valores:
+
+		```
+		vad_data->alpha1 = 2.06;
+  		vad_data->alpha2 = 6.91;
+  		vad_data->min_silence = 0.069;
+  		vad_data->min_voice = 0.01;
+		```
+
   ```
   ===> /home/jaumecort/PAV/P2/db.v4/2014/pav_4151.lab: 94.679%
   ===> /home/jaumecort/PAV/P2/db.v4/2014/pav_4152.lab: 73.730%
@@ -277,7 +287,7 @@ Este es el contenido del fichero de transcripción *.lab*. Con este formato anal
   ===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2372.lab: 86.991%
   ===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2381.lab: 86.950%
   **************** Summary ****************
-  ===> TOTAL: 91.222
+  ===> TOTAL: 91.222%
   ````
 
 - Inserte una gráfica en la que se vea con claridad la señal temporal, el etiquetado manual y la detección
