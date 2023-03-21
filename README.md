@@ -136,21 +136,21 @@ Ejercicios
   continuación, una captura de `wavesurfer` en la que se vea con claridad la señal temporal, el contorno de
   potencia y la tasa de cruces por cero, junto con el etiquetado manual de los segmentos.
 
-![Etiquetado de la señal](img/capt1.png)
+	![Etiquetado de la señal](img/capt1.png)
 
-Este es el contenido del fichero de transcripción *.lab*. Con este formato analizaremos después la calidad de nuestro detector. 
+	> Este es el contenido del fichero de transcripción *.lab*. Con este formato analizaremos después la calidad de nuestro detector. 
 
-```
-0.0000000 0.4732398 S
-0.4732398 1.6485528 V
-1.6485528 1.8876495 S
-1.8876495 2.8659600 V
-2.8659600 3.7959175 S
-3.7959175 5.1608672 V
-5.1608672 5.8699940 S
-5.8699940 7.5984906 V
-7.5984906 7.8447152 S
-```
+	```
+	0.0000000 0.4732398 S
+	0.4732398 1.6485528 V
+	1.6485528 1.8876495 S
+	1.8876495 2.8659600 V
+	2.8659600 3.7959175 S
+	3.7959175 5.1608672 V
+	5.1608672 5.8699940 S
+	5.8699940 7.5984906 V
+	7.5984906 7.8447152 S
+	```
 
 - A la vista de la gráfica, indique qué valores considera adecuados para las magnitudes siguientes:
 
