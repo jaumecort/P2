@@ -276,7 +276,8 @@ Este es el contenido del fichero de transcripción *.lab*. Con este formato anal
   ===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2371.lab: 96.814%
   ===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2372.lab: 86.991%
   ===> /home/jaumecort/PAV/P2/db.v4/2018-19q2/pav_2381.lab: 86.950%
-  **************** Summary ****************                                                                      ==g==> TOTAL: 91.222
+  **************** Summary ****************
+  ===> TOTAL: 91.222
   ````
 
 - Inserte una gráfica en la que se vea con claridad la señal temporal, el etiquetado manual y la detección
