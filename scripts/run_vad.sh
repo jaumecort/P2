@@ -13,7 +13,7 @@ ninja -C $DIR_P2/bin
 
 for filewav in $DB/*/*wav; do
 #    echo
-#    echo "**************** $filewav ****************"
+    echo "**************** $filewav ****************"
     if [[ ! -f $filewav ]]; then 
 	    echo "Wav file not found: $filewav" >&2
 	    exit 1
