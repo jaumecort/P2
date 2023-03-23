@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# != 1 ]; then
-    echo "Usage: $0 alfa 0"
+    echo "Usage: $0 alfa1"
     exit -1
 fi
 

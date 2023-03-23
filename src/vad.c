@@ -39,16 +39,16 @@ Features compute_features(const float *x, int N) {
  * TODO: Init the values of vad_data
  */
 
-VAD_DATA * vad_open(float rate, float alpha1) {
+VAD_DATA * vad_open(float rate, float alpha1, float alpha2, float min_silence, float min_voice) {
   VAD_DATA *vad_data = malloc(sizeof(VAD_DATA));
   vad_data->state = ST_INIT;
   vad_data->sampling_rate = rate;
   vad_data->frame_length = rate * FRAME_TIME * 1e-3;
   vad_data->last_feature = 0;
   vad_data->alpha1 = alpha1;
-  vad_data->alpha2 = 5.91;
-  vad_data->min_silence = 0.069;
-  vad_data->min_voice = 0.01;
+  vad_data->alpha2 = alpha2;
+  vad_data->min_silence = min_silence;
+  vad_data->min_voice = min_voice;
   vad_data->maybe_s_counter = 0;
   vad_data->maybe_v_counter = 0;
   return vad_data;
