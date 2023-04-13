@@ -228,9 +228,9 @@ Ejercicios
   $ bin/vad -h
   VAD - Voice Activity Detector 
   
-  Usage: 
-  	vad [options] -i <input-wav> -o <output-vad> [-w <output-wav>] 
-  	vad (-h |--help) 
+  Usage:
+	vad [options] -i <input-wav> -o <output-vad> [-w <output-wav>]
+	vad (-h |--help)
 	vad --version
 
   Options:
