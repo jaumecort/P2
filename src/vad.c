@@ -115,7 +115,10 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
     if (f.p > vad_data->k2){
       if(vad_data->maybe_v_counter*vad_data->frame_length/vad_data->sampling_rate < vad_data->min_voice)
         vad_data->maybe_v_counter++;
-      else vad_data->state = ST_VOICE;
+      else {
+        vad_data->maybe_v_counter = 0;
+        vad_data->state = ST_VOICE;
+      }
     } else if (f.p < vad_data->k2){
       vad_data->maybe_v_counter = 0;
       vad_data->state = ST_SILENCE;
@@ -126,7 +129,10 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
     if (f.p < vad_data->k1){
       if(vad_data->maybe_s_counter*vad_data->frame_length/vad_data->sampling_rate < vad_data->min_silence)
         vad_data->maybe_s_counter++;
-      else vad_data->state = ST_SILENCE;
+      else {
+        vad_data->state = ST_SILENCE;
+        vad_data->maybe_s_counter = 0;
+      }
     } else if (f.p < vad_data->k1){
       vad_data->maybe_s_counter = 0;
       vad_data->state = ST_VOICE;

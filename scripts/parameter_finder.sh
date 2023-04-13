@@ -12,9 +12,9 @@ BESTSCORE=0
 
 echo "" > out.txt
 
-for PARAM1 in $(seq 3 .05 3.5);
+for PARAM1 in $(seq 0 .2 6);
 do
-    for PARAM2 in $(seq 4.3 .05 4.7);
+    for PARAM2 in $(seq 0 .2 6);
     do
         echo -e -n "\rVAD with alpha1=$PARAM1 and alpha2=$PARAM2"
 
@@ -39,5 +39,5 @@ do
         #echo $($A-100)
     done
 done
-python3 scripts/biplot.py out.txt
+#python3 scripts/biplot.py out.txt
 exit 0

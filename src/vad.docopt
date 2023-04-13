@@ -9,8 +9,8 @@ Options:
    -i FILE, --input-wav=FILE   WAVE file for voice activity detection
    -o FILE, --output-vad=FILE  Label file with the result of VAD
    -w FILE, --output-wav=FILE  WAVE file with silences cleared
-   -1 FLOAT, --alpha1=FLOAT    alpha1 parameter for VAD [default: 2.08]
-   -2 FLOAT, --alpha2=FLOAT    alpha2 parameter for VAD [default: 5.91]
+   -1 FLOAT, --alpha1=FLOAT    alpha1 parameter for VAD [default: 3.5]
+   -2 FLOAT, --alpha2=FLOAT    alpha2 parameter for VAD [default: 4.45]
    -S FLOAT, --min_silence=FLOAT    min_silence parameter for VAD [default: 0.069]
    -V FLOAT, --min_voice=FLOAT    min_voice parameter for VAD [default: 0.01]
    -v, --verbose  Show debug information
