@@ -244,7 +244,7 @@ Options:
 	-v, --verbose  Show debug information
 	-h, --help     Show this screen
 	--version      Show the version of the project
-```
+  ```
 
 
 ### Contribuciones adicionales y/o comentarios acerca de la práctica
