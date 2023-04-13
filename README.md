@@ -232,8 +232,8 @@ Ejercicios
   	vad [options] -i <input-wav> -o <output-vad> [-w <output-wav>] 
   	vad (-h |--help) 
 	vad --version
-	
-Options:
+
+	Options:
 	-i FILE, --input-wav=FILE   WAVE file for voice activity detection
 	-o FILE, --output-vad=FILE  Label file with the result of VAD
 	-w FILE, --output-wav=FILE  WAVE file with silences cleared
