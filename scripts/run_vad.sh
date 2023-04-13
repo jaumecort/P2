@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ $# != 1 ]; then
-    echo "Usage: $0 alfa1"
+if [ $# != 2 ]; then
+    echo "Usage: $0 alfa1 alfa2"
     exit -1
 fi
 
@@ -11,14 +11,14 @@ fi
 # Write here the name and path of your program and database
 DIR_P2=$HOME/PAV/P2
 DB=$DIR_P2/db.v4
-CMD="$DIR_P2/bin/vad -1 $1" 
+CMD="$DIR_P2/bin/vad -1 $1 -2 $2" 
 
 # Compile project
-ninja -C $DIR_P2/bin
+#ninja -C $DIR_P2/bin
 
 for filewav in $DB/*/*wav; do
 #    echo
-    echo "**************** $filewav ****************"
+   # echo "**************** $filewav ****************"
     if [[ ! -f $filewav ]]; then 
 	    echo "Wav file not found: $filewav" >&2
 	    exit 1
@@ -34,7 +34,7 @@ for filewav in $DB/*/*wav; do
 
 done
 
-scripts/vad_evaluation.pl $DB/*/*lab
-ninja -C $DIR_P2/bin
+scripts/vad_evaluation_noverb.pl $DB/*/*lab
+#ninja -C $DIR_P2/bin
 
 exit 0

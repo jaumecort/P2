@@ -224,6 +224,28 @@ Ejercicios
 - Si ha usado `docopt_c` para realizar la gestión de las opciones y argumentos del programa `vad`, inserte
   una captura de pantalla en la que se vea el mensaje de ayuda del programa.
 
+  ```
+  $ bin/vad -h
+  VAD - Voice Activity Detector 
+  
+  Usage: 
+  	vad [options] -i <input-wav> -o <output-vad> [-w <output-wav>] 
+  	vad (-h |--help) 
+	vad --version
+	
+Options:
+	-i FILE, --input-wav=FILE   WAVE file for voice activity detection
+	-o FILE, --output-vad=FILE  Label file with the result of VAD
+	-w FILE, --output-wav=FILE  WAVE file with silences cleared
+	-1 FLOAT, --alpha1=FLOAT    alpha1 [default: 2.06]
+	-2 FLOAT, --alpha2=FLOAT    alpha2 [default: 5.91]
+	-S FLOAT, --min_silence=FLOAT    min_silence [default: 0.069]
+	-V FLOAT, --min_voice=FLOAT    min_voice [default: 0.01]
+	-v, --verbose  Show debug information
+	-h, --help     Show this screen
+	--version      Show the version of the project
+```
+
 
 ### Contribuciones adicionales y/o comentarios acerca de la práctica
 
