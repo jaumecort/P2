@@ -166,19 +166,20 @@ Ejercicios
 
 	> Jugando con los parametros del detector, encontramos un buen resultado sobre la base de datos con los siguientes valores:
 	```
-	vad_data->alpha1 = 2.06;
-	vad_data->alpha2 = 5.91;
-	vad_data->min_silence = 0.069;
-	vad_data->min_voice = 0.01;
+	alpha1=7.6 
+	alpha2=3.4 
+	min_silence=0.1 
+	min_voice=0 
+	zcr_stv=3400 
+	zcr_vts=3600
 	```
 
 	> Como vemos a continuación, obtenemos un F-TOTAL de 90.787%
 	```
-	**************** media/PAV_P2.lab ****************
-	Warning: adding extra silence [7.8447152, 7.97606] at the end of ref: media/PAV_P2.lab
-	Recall V:  5.16/5.25   98.38%   Precision V:  5.16/6.16   83.86%   F-score V (2)  : 95.09%
-	Recall S:  1.74/2.73   63.58%   Precision S:  1.74/1.82   95.34%   F-score S (1/2): 86.68%
-	===> media/PAV_P2.lab: 90.787% 
+	**************** prueba.lab ****************
+	Recall V:  6.92/6.94   99.74%   Precision V:  6.92/7.61   90.98%   F-score V (2)  : 97.86%
+	Recall S:  2.45/3.13   78.09%   Precision S:  2.45/2.46   99.28%   F-score S (1/2): 94.17%
+	===> prueba.lab: 95.995% 
 	```
 
 - Inserte una gráfica en la que se vea con claridad la señal temporal, el etiquetado manual y la detección
@@ -192,10 +193,10 @@ Ejercicios
   continuación las tasas de sensibilidad (*recall*) y precisión para el conjunto de la base de datos (sólo
   el resumen).
 	```
-	****************Summary****************
-	Recall V:471.65/495.55 95.18%   Precision V:471.65/535.77 88.03%   F-score V (2)  : 93.66%
-	Recall S:257.05/321.17 80.03%   Precision S:257.05/280.95 91.49%   F-score S (1/2): 88.95%
-	===> TOTAL: 91.271%
+	**************** Summary ****************
+	Recall V:481.46/495.55 97.16%   Precision V:481.46/537.06 89.65%   F-score V (2)  : 95.56%
+	Recall S:265.57/321.17 82.69%   Precision S:265.57/279.66 94.96%   F-score S (1/2): 92.22%
+	===> TOTAL: 93.875%
 	```
 
 ### Trabajos de ampliación

@@ -9,12 +9,12 @@ ninja -C bin
 apt install dc 
 alpha1=7.6 alpha2=3.4 min_silence=0.1 min_voice=0 zcr_stv=3400 zcr_vts=3600
 
-for alpha1 in $(seq 5 1 10); do 
-for alpha2 in $(seq 2 1 6); do
+for alpha1 in $(seq 0 1 10); do 
+for alpha2 in $(seq 0 1 6); do
 #for min_silence in $(seq 0 .010 0.2); do
 #for min_voice in $(seq 0 .01 0.2); do
-for zcr_stv in $(seq 3000 100 4000); do
-for zcr_vts in $(seq 3000 100 4000); do
+#for zcr_stv in $(seq 0 100 4000); do
+#for zcr_vts in $(seq 0 100 4000); do
     echo -e -n "\rVAD with alpha1=$alpha1, alpha2=$alpha2, min_silence=$min_silence, min_voice=$min_voice, zcr_stv=$zcr_stv and zcr_vts=$zcr_vts"
     for filewav in $DB/*/*wav; do
         filevad=${filewav/.wav/.vad}
@@ -28,5 +28,5 @@ for zcr_vts in $(seq 3000 100 4000); do
         clear
         echo "New Best score $BESTSCORE with parameters alpha1=$alpha1, alpha2=$alpha2, min_silence=$min_silence, min_voice=$min_voice, zcr_stv=$zcr_stv and zcr_vts=$zcr_vts"
     fi
-done  done  done  done # done
+     done  done # done  done # done
 exit 0

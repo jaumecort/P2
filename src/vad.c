@@ -41,6 +41,7 @@ Features compute_features(const float *x, int N) {
 
 VAD_DATA * vad_open(float rate, float alpha1, float alpha2, float min_silence, float min_voice, float zcr_stv, float zcr_vts) {
   VAD_DATA *vad_data = malloc(sizeof(VAD_DATA));
+  vad_data->first_silence = 1;
   vad_data->state = ST_INIT;
   vad_data->sampling_rate = rate;
   vad_data->frame_length = rate * FRAME_TIME * 1e-3;
@@ -99,10 +100,9 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
 
   case ST_SILENCE:
     if (f.p > vad_data->k2 || f.zcr > vad_data->zcr_stv){
+      vad_data->first_silence=0;
       vad_data->state = ST_MAYBE_VOICE;
       vad_data->maybe_v_counter++;
-    } else if(f.p < vad_data->k1){
-      //vad_data->k0 = (vad_data->k0 + f.p)/2;
     }
     break;
 

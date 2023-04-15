@@ -19,6 +19,7 @@ const char *state2str(VAD_STATE st);
    (counts, thresholds, etc.) */
 typedef struct {
   VAD_STATE state;
+  int first_silence;
   float sampling_rate;
   unsigned int frame_length;
   float last_feature; /* for debuggin purposes */
