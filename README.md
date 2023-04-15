@@ -177,12 +177,12 @@ Ejercicios
 
 	> Jugando con los parametros del detector, encontramos un buen resultado sobre la base de datos con los siguientes valores:
 
-	```
-	vad_data->alpha1 = 2.06;
-	vad_data->alpha2 = 5.91;
-	vad_data->min_silence = 0.069;
-	vad_data->min_voice = 0.01;
-	```
+		```
+		vad_data->alpha1 = 2.06;
+		vad_data->alpha2 = 5.91;
+		vad_data->min_silence = 0.069;
+		vad_data->min_voice = 0.01;
+		```
 	> Como vemos a continuación, obtenemos un F-TOTAL de 90.787%
 	```
 	**************** media/PAV_P2.lab ****************
@@ -203,12 +203,12 @@ Ejercicios
   continuación las tasas de sensibilidad (*recall*) y precisión para el conjunto de la base de datos (sólo
   el resumen).
 
-  ```
-  ****************Summary****************
-  Recall V:471.65/495.55 95.18%   Precision V:471.65/535.77 88.03%   F-score V (2)  : 93.66%
-  Recall S:257.05/321.17 80.03%   Precision S:257.05/280.95 91.49%   F-score S (1/2): 88.95%
-  ===> TOTAL: 91.271%
-  ```
+	  ```
+	  ****************Summary****************
+	  Recall V:471.65/495.55 95.18%   Precision V:471.65/535.77 88.03%   F-score V (2)  : 93.66%
+	  Recall S:257.05/321.17 80.03%   Precision S:257.05/280.95 91.49%   F-score S (1/2): 88.95%
+	  ===> TOTAL: 91.271%
+	  ```
 
 
 ### Trabajos de ampliación
@@ -226,7 +226,6 @@ Ejercicios
 - Si ha usado `docopt_c` para realizar la gestión de las opciones y argumentos del programa `vad`, inserte
   una captura de pantalla en la que se vea el mensaje de ayuda del programa.
 
-	  ```
 	  $ bin/vad -h
 	  VAD - Voice Activity Detector 
 
@@ -246,7 +245,6 @@ Ejercicios
 		-v, --verbose  Show debug information
 		-h, --help     Show this screen
 		--version      Show the version of the project
-	  ```
 
 
 ### Contribuciones adicionales y/o comentarios acerca de la práctica
