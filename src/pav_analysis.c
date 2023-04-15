@@ -36,7 +36,7 @@ float compute_zcr(const float *x, unsigned int N, float fm) {
     float sum=1e-12;
     int mult = fm/(2*(N-1));
     for(unsigned int i = 0; i<N-1; i++)
-        if((x[i]>=0 && x[i+1]<0) || x[i]<0 && x[i+1]>=0)
+        if((x[i]>=0 && x[i+1]<0) || (x[i]<0 && x[i+1]>=0))
             sum++;
     return mult*sum;
 }

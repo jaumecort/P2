@@ -1,20 +1,13 @@
 #!/bin/bash
 
-if [ $# != 2 ]; then
-    echo "Usage: $0 alfa1 alfa2"
-    exit -1
-fi
-
 # Be sure that this file has execution permissions:
 # Use the nautilus explorer or chmod +x run_vad.sh
 
 # Write here the name and path of your program and database
 DIR_P2=$HOME/PAV/P2
 DB=$DIR_P2/db.v4
-CMD="$DIR_P2/bin/vad -1 $1 -2 $2" 
+CMD="$DIR_P2/bin/vad" 
 
-# Compile project
-#ninja -C $DIR_P2/bin
 
 for filewav in $DB/*/*wav; do
 #    echo
@@ -35,6 +28,6 @@ for filewav in $DB/*/*wav; do
 done
 
 scripts/vad_evaluation_noverb.pl $DB/*/*lab
-#ninja -C $DIR_P2/bin
+
 
 exit 0

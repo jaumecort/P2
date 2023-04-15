@@ -23,6 +23,8 @@ typedef struct {
     char *min_voice;
     char *output_vad;
     char *output_wav;
+    char *zcr_stv;
+    char *zcr_vts;
     /* special */
     const char *usage_pattern;
     const char *help_message;
@@ -40,10 +42,12 @@ const char help_message[] =
 "   -i FILE, --input-wav=FILE   WAVE file for voice activity detection\n"
 "   -o FILE, --output-vad=FILE  Label file with the result of VAD\n"
 "   -w FILE, --output-wav=FILE  WAVE file with silences cleared\n"
-"   -1 FLOAT, --alpha1=FLOAT    alpha1 [default: 2.06]\n"
-"   -2 FLOAT, --alpha2=FLOAT    alpha2 [default: 5.91]\n"
-"   -S FLOAT, --min_silence=FLOAT    min_silence [default: 0.069]\n"
-"   -V FLOAT, --min_voice=FLOAT    min_voice [default: 0.01]\n"
+"   -1 FLOAT, --alpha1=FLOAT    alpha1 parameter for VAD [default: 5]\n"
+"   -2 FLOAT, --alpha2=FLOAT    alpha2 parameter for VAD [default: 6]\n"
+"   -Z FLOAT, --zcr_stv=FLOAT     zcr parameter to voice for VAD [default: 40]\n"
+"   -X FLOAT, --zcr_vts=FLOAT     zcr parameter to silence for VAD [default: 40]\n"
+"   -S FLOAT, --min_silence=FLOAT    min_silence parameter for VAD [default: 0.11]\n"
+"   -V FLOAT, --min_voice=FLOAT    min_voice parameter for VAD [default: 0]\n"
 "   -v, --verbose  Show debug information\n"
 "   -h, --help     Show this screen\n"
 "   --version      Show the version of the project\n"
@@ -299,6 +303,12 @@ int elems_to_args(Elements *elements, DocoptArgs *args, bool help,
         } else if (!strcmp(option->olong, "--output-wav")) {
             if (option->argument)
                 args->output_wav = option->argument;
+        } else if (!strcmp(option->olong, "--zcr_stv")) {
+            if (option->argument)
+                args->zcr_stv = option->argument;
+        } else if (!strcmp(option->olong, "--zcr_vts")) {
+            if (option->argument)
+                args->zcr_vts = option->argument;
         }
     }
     /* commands */
@@ -319,8 +329,8 @@ int elems_to_args(Elements *elements, DocoptArgs *args, bool help,
 
 DocoptArgs docopt(int argc, char *argv[], bool help, const char *version) {
     DocoptArgs args = {
-        0, 0, 0, (char*) "2.06", (char*) "5.91", NULL, (char*) "0.069", (char*)
-        "0.01", NULL, NULL,
+        0, 0, 0, (char*) "5", (char*) "6", NULL, (char*) "0.11", (char*) "0",
+        NULL, NULL, (char*) "40", (char*) "40",
         usage_pattern, help_message
     };
     Tokens ts;
@@ -338,9 +348,11 @@ DocoptArgs docopt(int argc, char *argv[], bool help, const char *version) {
         {"-S", "--min_silence", 1, 0, NULL},
         {"-V", "--min_voice", 1, 0, NULL},
         {"-o", "--output-vad", 1, 0, NULL},
-        {"-w", "--output-wav", 1, 0, NULL}
+        {"-w", "--output-wav", 1, 0, NULL},
+        {"-Z", "--zcr_stv", 1, 0, NULL},
+        {"-X", "--zcr_vts", 1, 0, NULL}
     };
-    Elements elements = {0, 0, 10, commands, arguments, options};
+    Elements elements = {0, 0, 12, commands, arguments, options};
 
     ts = tokens_new(argc, argv);
     if (parse_args(&ts, &elements))

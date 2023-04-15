@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
   int frame_size;         /* in samples */
   float frame_duration;   /* in seconds */
   unsigned int t, last_t; /* in frames */
-  float alpha1, alpha2, min_voice, min_silence;
+  float alpha1, alpha2, min_voice, min_silence, zcr_stv, zcr_vts;
 
   char	*input_wav, *output_vad, *output_wav;
 
@@ -37,6 +37,8 @@ int main(int argc, char *argv[]) {
   alpha2 = atof(args.alpha2);
   min_silence = atof(args.min_silence);
   min_voice = atof(args.min_voice);
+  zcr_stv = atof(args.zcr_stv);
+  zcr_vts = atof(args.zcr_vts);
 
 
   if (input_wav == 0 || output_vad == 0) {
@@ -69,7 +71,7 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  vad_data = vad_open(sf_info.samplerate, alpha1, alpha2, min_silence, min_voice);
+  vad_data = vad_open(sf_info.samplerate, alpha1, alpha2, min_silence, min_voice,  zcr_stv, zcr_vts);
   /* Allocate memory for buffers */
   frame_size   = vad_frame_size(vad_data);
   buffer       = (float *) malloc(frame_size * sizeof(float));

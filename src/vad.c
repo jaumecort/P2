@@ -29,7 +29,7 @@ typedef struct {
 
 Features compute_features(const float *x, int N) {
   Features feat;
-  //feat.zcr = compute_zcr(x,N);
+  feat.zcr = compute_zcr(x,N, 16000);
   feat.p = compute_power(x,N);
   //feat.am = compute_am(x,N);
   return feat;
@@ -39,7 +39,7 @@ Features compute_features(const float *x, int N) {
  * TODO: Init the values of vad_data
  */
 
-VAD_DATA * vad_open(float rate, float alpha1, float alpha2, float min_silence, float min_voice) {
+VAD_DATA * vad_open(float rate, float alpha1, float alpha2, float min_silence, float min_voice, float zcr_stv, float zcr_vts) {
   VAD_DATA *vad_data = malloc(sizeof(VAD_DATA));
   vad_data->state = ST_INIT;
   vad_data->sampling_rate = rate;
@@ -51,6 +51,8 @@ VAD_DATA * vad_open(float rate, float alpha1, float alpha2, float min_silence, f
   vad_data->min_voice = min_voice;
   vad_data->maybe_s_counter = 0;
   vad_data->maybe_v_counter = 0;
+  vad_data->zcr_stv = zcr_stv;
+  vad_data->zcr_vts = zcr_vts;
   return vad_data;
 }
 
@@ -96,7 +98,7 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
     break;
 
   case ST_SILENCE:
-    if (f.p > vad_data->k2){
+    if (f.p > vad_data->k2 || f.zcr > vad_data->zcr_stv){
       vad_data->state = ST_MAYBE_VOICE;
       vad_data->maybe_v_counter++;
     } else if(f.p < vad_data->k1){
@@ -105,35 +107,35 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
     break;
 
   case ST_VOICE:
-    if (f.p < vad_data->k1){
+    if (f.p < vad_data->k1 && f.zcr < vad_data->zcr_vts){
       vad_data->state = ST_MAYBE_SILENCE;
       vad_data->maybe_s_counter++;
     }
     break;
 
   case ST_MAYBE_VOICE:
-    if (f.p > vad_data->k2){
+    if (f.p > vad_data->k2 || f.zcr > vad_data->zcr_stv){
       if(vad_data->maybe_v_counter*vad_data->frame_length/vad_data->sampling_rate < vad_data->min_voice)
         vad_data->maybe_v_counter++;
       else {
         vad_data->maybe_v_counter = 0;
         vad_data->state = ST_VOICE;
       }
-    } else if (f.p < vad_data->k2){
+    } else if (f.p < vad_data->k1){
       vad_data->maybe_v_counter = 0;
       vad_data->state = ST_SILENCE;
     }
     break;
 
   case ST_MAYBE_SILENCE:
-    if (f.p < vad_data->k1){
+    if (f.p < vad_data->k1 && f.zcr < vad_data->zcr_vts){
       if(vad_data->maybe_s_counter*vad_data->frame_length/vad_data->sampling_rate < vad_data->min_silence)
         vad_data->maybe_s_counter++;
       else {
         vad_data->state = ST_SILENCE;
         vad_data->maybe_s_counter = 0;
       }
-    } else if (f.p < vad_data->k1){
+    } else if (f.p > vad_data->k2){
       vad_data->maybe_s_counter = 0;
       vad_data->state = ST_VOICE;
     }
