@@ -140,8 +140,6 @@ Ejercicios
 
 	> Este es el contenido del fichero de transcripción *.lab*. Con este formato analizaremos después la calidad de nuestro detector. 
 
-s7.8447152 S
-	```
 
 - A la vista de la gráfica, indique qué valores considera adecuados para las magnitudes siguientes:
 
