@@ -174,7 +174,7 @@ Ejercicios
 	zcr_vts=3600
 	```
 
-	> Como vemos a continuación, obtenemos un F-TOTAL de 90.787%
+	> Como vemos a continuación, obtenemos un F-TOTAL de 95.995%
 	```
 	**************** prueba.lab ****************
 	Recall V:  6.92/6.94   99.74%   Precision V:  6.92/7.61   90.98%   F-score V (2)  : 97.86%
