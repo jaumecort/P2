@@ -166,8 +166,7 @@ Ejercicios
 
 	> Jugando con los parametros del detector, encontramos un buen resultado sobre la base de datos con los siguientes valores:
 
-		```
-		vad_data->alpha1 = 2.06;
+		```vad_data->alpha1 = 2.06;
 		vad_data->alpha2 = 5.91;
 		vad_data->min_silence = 0.069;
 		vad_data->min_voice = 0.01;
