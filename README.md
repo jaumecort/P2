@@ -237,34 +237,39 @@ Ejercicios
 
 - Indique a continuación si ha realizado algún tipo de aportación suplementaria (algoritmos de detección o 
   parámetros alternativos, etc.).
-  	> Para encontrar los mejores parametros para evaluar la base de datos, hemos relizado un pequeño script (*scripts/parameter_finder.sh*) que, dados unos umbrales (maximo y mínimo) y un valor de paso para cada uno de los 3 parametros que soporta, evalua todas las combinaciones posibles y va presentando por pantalla la mejor de todas.
+  	> Para encontrar los mejores parametros para evaluar la base de datos, hemos relizado un pequeño script (*scripts/parameter_finder.sh*) que, dados unos umbrales (maximo y mínimo) y un valor de paso para cada uno de los 5 parametros, evalua todas las combinaciones posibles y va presentando por pantalla la mejor de todas.
 	```
+	#!/bin/bash
+
 	DIR_P2=$HOME/PAV/P2
 	DB=$DIR_P2/db.v4
 	CMD=$DIR_P2/bin/vad 
 	BESTSCORE=0
-	for PARAM1 in $(seq 0 .2 6);
-	do
-	    for PARAM2 in $(seq 0 .2 6);
-	    do
-		echo -e -n "\rVAD with alpha1=$PARAM1 and alpha2=$PARAM2"
-		for filewav in $DB/*/*wav; 
-		do
-		    filevad=${filewav/.wav/.vad}
-		    $CMD -i $filewav -o $filevad -1 $PARAM1 -2 $PARAM2 || exit 1
-		done
-		A=$(scripts/vad_evaluation_noverb.pl $DB/*/*lab)
-		if ! echo "$A $BESTSCORE -p" | dc | grep > /dev/null ^-; then
-		    BESTSCORE=$A
-		    BESTP1=$PARAM1
-		    BESTP2=$PARAM2
-		    clear
-		    echo "New Best score $BESTSCORE with parameters alpha1=$BESTP1 and alpha2=$BESTP2"
-		fi
-		echo "$PARAM1 $PARAM2 $A" >> out.txt
-		#echo $($A-100)
+
+	apt install dc 
+	alpha1=8 alpha2=3 min_silence=0.1 min_voice=0 zcr_u=100
+
+	#for alpha1 in $(seq 5 1 10); do 
+	#for alpha2 in $(seq 0 1 6); do
+	for min_silence in $(seq 0 .010 0.2); do
+	for min_voice in $(seq 0 .010 0.2); do
+	#for zcr_u in $(seq 0 .2 1); do
+	
+	    echo -e -n "\rVAD with alpha1=$alpha1, alpha2=$alpha2, min_silence=$min_silence, min_voice=$min_voice, zcr_u=$zcr_u"
+	    for filewav in $DB/*/*wav; do
+		filevad=${filewav/.wav/.vad}
+		$CMD -i $filewav -o $filevad -1 $alpha1 -2 $alpha2 -S $min_silence -V $min_voice -Z $zcr_u || exit 1
 	    done
-	done
+	    A=$(scripts/vad_evaluation_noverb.pl $DB/*/*lab)
+	    if ! echo "$A $BESTSCORE -p" | dc | grep > /dev/null ^-; then
+		BESTSCORE=$A
+		BESTP1=$PARAM1
+		BESTP2=$PARAM2
+		clear
+		echo "New Best score $BESTSCORE with parameters alpha1=$alpha1, alpha2=$alpha2, min_silence=$min_silence, min_voice=$min_voice, zcr_u=$zcr_u"
+	    fi
+	    
+	done done # done  done done
 	exit 0
 	```
 
