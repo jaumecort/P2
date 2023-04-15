@@ -188,6 +188,7 @@ Ejercicios
 	![Etiquetado y VAD de la señal](img/capt2.png)
 
 - Explique, si existen. las discrepancias entre el etiquetado manual y la detección automática.
+	> Vemos como nuestro sistema ha insertado erroneamente un label de Voz al inicio de la grabación. Además, el resto de labels no encajan del todo a la perfección.
 
 - Evalúe los resultados sobre la base de datos `db.v4` con el script `vad_evaluation.pl` e inserte a 
   continuación las tasas de sensibilidad (*recall*) y precisión para el conjunto de la base de datos (sólo
