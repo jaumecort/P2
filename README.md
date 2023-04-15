@@ -226,33 +226,63 @@ Ejercicios
 - Si ha usado `docopt_c` para realizar la gestión de las opciones y argumentos del programa `vad`, inserte
   una captura de pantalla en la que se vea el mensaje de ayuda del programa.
 
-  ```
-  $ bin/vad -h
-  VAD - Voice Activity Detector 
-  
-  Usage:
-	vad [options] -i <input-wav> -o <output-vad> [-w <output-wav>]
-	vad (-h |--help)
-	vad --version
+	  ```
+	  $ bin/vad -h
+	  VAD - Voice Activity Detector 
 
-  Options:
-	-i FILE, --input-wav=FILE   WAVE file for voice activity detection
-	-o FILE, --output-vad=FILE  Label file with the result of VAD
-	-w FILE, --output-wav=FILE  WAVE file with silences cleared
-	-1 FLOAT, --alpha1=FLOAT    alpha1 [default: 2.06]
-	-2 FLOAT, --alpha2=FLOAT    alpha2 [default: 5.91]
-	-S FLOAT, --min_silence=FLOAT    min_silence [default: 0.069]
-	-V FLOAT, --min_voice=FLOAT    min_voice [default: 0.01]
-	-v, --verbose  Show debug information
-	-h, --help     Show this screen
-	--version      Show the version of the project
-  ```
+	  Usage:
+		vad [options] -i <input-wav> -o <output-vad> [-w <output-wav>]
+		vad (-h |--help)
+		vad --version
+
+	  Options:
+		-i FILE, --input-wav=FILE   WAVE file for voice activity detection
+		-o FILE, --output-vad=FILE  Label file with the result of VAD
+		-w FILE, --output-wav=FILE  WAVE file with silences cleared
+		-1 FLOAT, --alpha1=FLOAT    alpha1 [default: 2.06]
+		-2 FLOAT, --alpha2=FLOAT    alpha2 [default: 5.91]
+		-S FLOAT, --min_silence=FLOAT    min_silence [default: 0.069]
+		-V FLOAT, --min_voice=FLOAT    min_voice [default: 0.01]
+		-v, --verbose  Show debug information
+		-h, --help     Show this screen
+		--version      Show the version of the project
+	  ```
 
 
 ### Contribuciones adicionales y/o comentarios acerca de la práctica
 
 - Indique a continuación si ha realizado algún tipo de aportación suplementaria (algoritmos de detección o 
   parámetros alternativos, etc.).
+  	> Para encontrar los mejores parametros para evaluar la base de datos, hemos relizado un pequeño script (*scripts/parameter_finder.sh*) que, dados unos umbrales (maximo y mínimo) y un valor de paso para cada uno de los 3 parametros que soporta, evalua todas las combinaciones posibles y va presentando por pantalla la mejor de todas.
+	```
+	DIR_P2=$HOME/PAV/P2
+	DB=$DIR_P2/db.v4
+	CMD=$DIR_P2/bin/vad 
+	BESTSCORE=0
+	for PARAM1 in $(seq 0 .2 6);
+	do
+	    for PARAM2 in $(seq 0 .2 6);
+	    do
+		echo -e -n "\rVAD with alpha1=$PARAM1 and alpha2=$PARAM2"
+		for filewav in $DB/*/*wav; 
+		do
+		    filevad=${filewav/.wav/.vad}
+		    $CMD -i $filewav -o $filevad -1 $PARAM1 -2 $PARAM2 || exit 1
+		done
+		A=$(scripts/vad_evaluation_noverb.pl $DB/*/*lab)
+		if ! echo "$A $BESTSCORE -p" | dc | grep > /dev/null ^-; then
+		    BESTSCORE=$A
+		    BESTP1=$PARAM1
+		    BESTP2=$PARAM2
+		    clear
+		    echo "New Best score $BESTSCORE with parameters alpha1=$BESTP1 and alpha2=$BESTP2"
+		fi
+		echo "$PARAM1 $PARAM2 $A" >> out.txt
+		#echo $($A-100)
+	    done
+	done
+	exit 0
+	
 
 - Si lo desea, puede realizar también algún comentario acerca de la realización de la práctica que
   considere de interés de cara a su evaluación.
