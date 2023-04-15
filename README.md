@@ -173,12 +173,13 @@ Ejercicios
 	```
 
 	> Como vemos a continuación, obtenemos un F-TOTAL de 90.787%
-
-		**************** media/PAV_P2.lab ****************
-		Warning: adding extra silence [7.8447152, 7.97606] at the end of ref: media/PAV_P2.lab
-		Recall V:  5.16/5.25   98.38%   Precision V:  5.16/6.16   83.86%   F-score V (2)  : 95.09%
-		Recall S:  1.74/2.73   63.58%   Precision S:  1.74/1.82   95.34%   F-score S (1/2): 86.68%
-		===> media/PAV_P2.lab: 90.787% 
+	```
+	**************** media/PAV_P2.lab ****************
+	Warning: adding extra silence [7.8447152, 7.97606] at the end of ref: media/PAV_P2.lab
+	Recall V:  5.16/5.25   98.38%   Precision V:  5.16/6.16   83.86%   F-score V (2)  : 95.09%
+	Recall S:  1.74/2.73   63.58%   Precision S:  1.74/1.82   95.34%   F-score S (1/2): 86.68%
+	===> media/PAV_P2.lab: 90.787% 
+	```
 
 - Inserte una gráfica en la que se vea con claridad la señal temporal, el etiquetado manual y la detección
   automática conseguida para el fichero grabado al efecto. 
@@ -190,12 +191,12 @@ Ejercicios
 - Evalúe los resultados sobre la base de datos `db.v4` con el script `vad_evaluation.pl` e inserte a 
   continuación las tasas de sensibilidad (*recall*) y precisión para el conjunto de la base de datos (sólo
   el resumen).
-
-	  ****************Summary****************
-	  Recall V:471.65/495.55 95.18%   Precision V:471.65/535.77 88.03%   F-score V (2)  : 93.66%
-	  Recall S:257.05/321.17 80.03%   Precision S:257.05/280.95 91.49%   F-score S (1/2): 88.95%
-	  ===> TOTAL: 91.271%
-
+```
+****************Summary****************
+Recall V:471.65/495.55 95.18%   Precision V:471.65/535.77 88.03%   F-score V (2)  : 93.66%
+Recall S:257.05/321.17 80.03%   Precision S:257.05/280.95 91.49%   F-score S (1/2): 88.95%
+===> TOTAL: 91.271%
+```
 
 ### Trabajos de ampliación
 
@@ -211,61 +212,61 @@ Ejercicios
 
 - Si ha usado `docopt_c` para realizar la gestión de las opciones y argumentos del programa `vad`, inserte
   una captura de pantalla en la que se vea el mensaje de ayuda del programa.
-  
-	  $ bin/vad -h
-	  VAD - Voice Activity Detector 
+  ```
+  $ bin/vad -h
+  VAD - Voice Activity Detector 
 
-	  Usage:
-		vad [options] -i <input-wav> -o <output-vad> [-w <output-wav>]
-		vad (-h |--help)
-		vad --version
+  Usage:
+	vad [options] -i <input-wav> -o <output-vad> [-w <output-wav>]
+	vad (-h |--help)
+	vad --version
 
-	  Options:
-		-i FILE, --input-wav=FILE   WAVE file for voice activity detection
-		-o FILE, --output-vad=FILE  Label file with the result of VAD
-		-w FILE, --output-wav=FILE  WAVE file with silences cleared
-		-1 FLOAT, --alpha1=FLOAT    alpha1 [default: 2.06]
-		-2 FLOAT, --alpha2=FLOAT    alpha2 [default: 5.91]
-		-S FLOAT, --min_silence=FLOAT    min_silence [default: 0.069]
-		-V FLOAT, --min_voice=FLOAT    min_voice [default: 0.01]
-		-v, --verbose  Show debug information
-		-h, --help     Show this screen
-		--version      Show the version of the project
-
+  Options:
+	-i FILE, --input-wav=FILE   WAVE file for voice activity detection
+	-o FILE, --output-vad=FILE  Label file with the result of VAD
+	-w FILE, --output-wav=FILE  WAVE file with silences cleared
+	-1 FLOAT, --alpha1=FLOAT    alpha1 [default: 2.06]
+	-2 FLOAT, --alpha2=FLOAT    alpha2 [default: 5.91]
+	-S FLOAT, --min_silence=FLOAT    min_silence [default: 0.069]
+	-V FLOAT, --min_voice=FLOAT    min_voice [default: 0.01]
+	-v, --verbose  Show debug information
+	-h, --help     Show this screen
+	--version      Show the version of the project
+	```
 ### Contribuciones adicionales y/o comentarios acerca de la práctica
 
 - Indique a continuación si ha realizado algún tipo de aportación suplementaria (algoritmos de detección o 
   parámetros alternativos, etc.).
   	> Para encontrar los mejores parametros para evaluar la base de datos, hemos relizado un pequeño script (*scripts/parameter_finder.sh*) que, dados unos umbrales (maximo y mínimo) y un valor de paso para cada uno de los 3 parametros que soporta, evalua todas las combinaciones posibles y va presentando por pantalla la mejor de todas.
-
-		DIR_P2=$HOME/PAV/P2
-		DB=$DIR_P2/db.v4
-		CMD=$DIR_P2/bin/vad 
-		BESTSCORE=0
-		for PARAM1 in $(seq 0 .2 6);
+	```
+	DIR_P2=$HOME/PAV/P2
+	DB=$DIR_P2/db.v4
+	CMD=$DIR_P2/bin/vad 
+	BESTSCORE=0
+	for PARAM1 in $(seq 0 .2 6);
+	do
+	    for PARAM2 in $(seq 0 .2 6);
+	    do
+		echo -e -n "\rVAD with alpha1=$PARAM1 and alpha2=$PARAM2"
+		for filewav in $DB/*/*wav; 
 		do
-		    for PARAM2 in $(seq 0 .2 6);
-		    do
-			echo -e -n "\rVAD with alpha1=$PARAM1 and alpha2=$PARAM2"
-			for filewav in $DB/*/*wav; 
-			do
-			    filevad=${filewav/.wav/.vad}
-			    $CMD -i $filewav -o $filevad -1 $PARAM1 -2 $PARAM2 || exit 1
-			done
-			A=$(scripts/vad_evaluation_noverb.pl $DB/*/*lab)
-			if ! echo "$A $BESTSCORE -p" | dc | grep > /dev/null ^-; then
-			    BESTSCORE=$A
-			    BESTP1=$PARAM1
-			    BESTP2=$PARAM2
-			    clear
-			    echo "New Best score $BESTSCORE with parameters alpha1=$BESTP1 and alpha2=$BESTP2"
-			fi
-			echo "$PARAM1 $PARAM2 $A" >> out.txt
-			#echo $($A-100)
-		    done
+		    filevad=${filewav/.wav/.vad}
+		    $CMD -i $filewav -o $filevad -1 $PARAM1 -2 $PARAM2 || exit 1
 		done
-		exit 0
-
+		A=$(scripts/vad_evaluation_noverb.pl $DB/*/*lab)
+		if ! echo "$A $BESTSCORE -p" | dc | grep > /dev/null ^-; then
+		    BESTSCORE=$A
+		    BESTP1=$PARAM1
+		    BESTP2=$PARAM2
+		    clear
+		    echo "New Best score $BESTSCORE with parameters alpha1=$BESTP1 and alpha2=$BESTP2"
+		fi
+		echo "$PARAM1 $PARAM2 $A" >> out.txt
+		#echo $($A-100)
+	    done
+	done
+	exit 0
+	```
 
 - Si lo desea, puede realizar también algún comentario acerca de la realización de la práctica que
   considere de interés de cara a su evaluación.
